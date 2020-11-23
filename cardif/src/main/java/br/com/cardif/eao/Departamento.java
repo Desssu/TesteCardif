@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -21,13 +22,17 @@ import lombok.Setter;
 public class Departamento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqDepartamento")
+	@SequenceGenerator(name="seqDepartamento", sequenceName="seq_departamento", initialValue = 3, allocationSize = 1)
 	@Column(name = "departamento_id")
 	private Long id;
 
 	@Column(name = "departamento_name", length = 50)
 	private String nome;
 
+	@ManyToMany(mappedBy = "listaDepartamentos", fetch = FetchType.EAGER)
+	private List<Funcionario> funcionario;
+	
 	public Departamento() {
 	}
 
@@ -36,9 +41,6 @@ public class Departamento {
 		this.id = id;
 		this.nome = nome;
 	}
-
-	@ManyToMany(mappedBy = "listaDepartamentos", fetch = FetchType.EAGER)
-	private List<Funcionario> funcionario;
 
 	@Override
 	public int hashCode() {

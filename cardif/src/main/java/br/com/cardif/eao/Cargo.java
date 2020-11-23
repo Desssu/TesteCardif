@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -21,7 +22,8 @@ import lombok.Setter;
 public class Cargo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqCargo")
+	@SequenceGenerator(name="seqCargo", sequenceName="seq_cargo", initialValue = 3, allocationSize = 1)
 	@Column(name = "cargo_id")
 	private Long id;
 

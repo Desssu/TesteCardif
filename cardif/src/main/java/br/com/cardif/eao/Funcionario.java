@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
@@ -28,7 +29,8 @@ import lombok.Setter;
 public class Funcionario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqFuncionario")
+	@SequenceGenerator(name="seqFuncionario", sequenceName="seq_funcionario", initialValue = 7, allocationSize = 1)
 	@Column(name = "funcionario_id")
 	private Long id;
 

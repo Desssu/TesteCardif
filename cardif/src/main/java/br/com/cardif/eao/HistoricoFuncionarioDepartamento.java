@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,7 +21,7 @@ public class HistoricoFuncionarioDepartamento {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seqHistFuncDepart")
-	@SequenceGenerator(name="seqHistFuncDepart", sequenceName="seq_historico_func_depart", initialValue = 1)
+	@SequenceGenerator(name="seqHistFuncDepart", sequenceName="seq_historico_func_depart", initialValue = 1, allocationSize = 1)
 	@Column(name = "hist_func_dept_id")
 	private Long id;
 	
