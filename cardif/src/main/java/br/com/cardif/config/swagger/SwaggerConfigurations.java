@@ -1,9 +1,6 @@
 package br.com.cardif.config.swagger;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZonedDateTime;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,10 +18,7 @@ public class SwaggerConfigurations {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
-//				.directModelSubstitute(LocalDateTime.class, String.class)
                 .directModelSubstitute(LocalDate.class, String.class)
-//                .directModelSubstitute(LocalTime.class, String.class)
-//                .directModelSubstitute(ZonedDateTime.class, String.class)
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("br.com.cardif.ws.rest")).paths(PathSelectors.ant("/**"))
 				.build();

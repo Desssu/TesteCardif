@@ -11,8 +11,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -36,7 +34,6 @@ public class FuncionarioNovoDto implements Serializable {
 
 	@JsonProperty("Data de Nascimento")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull
 	@Past
 	private LocalDate dataNascimento;

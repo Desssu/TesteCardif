@@ -41,9 +41,7 @@ public class ErroDeValidacaoHandler {
 	@ExceptionHandler(ValidacaoNotFoundException.class)
 	public List<ErroDeValidacaoDto> handle(ValidacaoNotFoundException exception) {
 		List<ErroDeValidacaoDto> dto = new ArrayList<>();
-
 		dto.add(new ErroDeValidacaoDto(exception.getCampo(), exception.getMessage()));
-		
 		return dto;
 	}
 

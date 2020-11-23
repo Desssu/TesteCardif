@@ -18,15 +18,16 @@ public class TriggerHistFuncDepart extends TriggerAdapter {
 			stmt.setObject(++index, java.sql.Timestamp.valueOf(LocalDateTime.now()));
 			stmt.setObject(++index, oldRow.getLong("DEPARTAMENTO_ID"));
 			stmt.setObject(++index, oldRow.getLong("FUNCIONARIO_ID"));
+			stmt.setObject(++index, oldRow.getString("FLAG_FUNC_CHEFE_DEPARTAMENTO"));
 			stmt.execute();
 		}
 	}
 
 	private String criarQuery() {
 		StringBuilder insert = new StringBuilder("INSERT INTO HISTORICO_FUNC_DEPART ");
-		insert.append("(HIST_FUNC_DEPT_ID , DATA_CRIACAO , DEPARTAMENTO_ID , FUNCIONARIO_ID )");
+		insert.append("(HIST_FUNC_DEPT_ID , DATA_CRIACAO , DEPARTAMENTO_ID , FUNCIONARIO_ID, FLAG_FUNC_CHEFE_DEPARTAMENTO)");
 		insert.append(" VALUES ");
-		insert.append("(SEQ_HISTORICO_FUNC_DEPART.NEXTVAL, ?, ?, ?)");
+		insert.append("(SEQ_HISTORICO_FUNC_DEPART.NEXTVAL, ?, ?, ?, ?)");
 		return insert.toString();
 	}
 

@@ -32,7 +32,7 @@ public class CargoConverter implements Converter<String, CargoDto>{
             }else {
             	return null;
             }
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             return null;
         }
 	}

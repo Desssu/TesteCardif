@@ -58,7 +58,6 @@ public class FuncionarioDto implements Serializable {
 		this.cargoDto = new CargoDto(funcionario.getCargo());
 		this.listaDepartamentos = funcionario.getListaDepartamentos().stream().map(DepartamentoDto::new)
 				.collect(Collectors.toList());
-
 	}
 
 }

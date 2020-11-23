@@ -32,7 +32,7 @@ public class DepartamentoConverter implements Converter<String, DepartamentoDto>
             }else {
             	return null;
             }
-        } catch (SecurityException ex) {
+        } catch (NumberFormatException ex) {
             return null;
         }
 	}

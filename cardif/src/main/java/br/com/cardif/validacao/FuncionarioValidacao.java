@@ -22,5 +22,4 @@ public class FuncionarioValidacao {
 			throw new ValidacaoNotFoundException("Id do Funcionario", MessageFormat.format("Id {0} não existe na base de dados", idFuncionario));
 		}
 	}
-
 }

@@ -16,21 +16,15 @@ import br.com.cardif.ws.dto.FuncionarioNovoDto;
 public class FuncionarioConverter {
 
 	public Funcionario dtoParaEntidade(FuncionarioNovoDto dto) {
-
 		Funcionario entidade = new Funcionario();
 		entidade.setDataNascimento(dto.getDataNascimento());
 		entidade.setDocumento(dto.getDocumento());
 		entidade.setIdade(dto.getIdade());
 		entidade.setNome(dto.getNome());
-
 		entidade.setCargo(new Cargo(dto.getIdCargo(), null));
-
 		List<Departamento> listaDepartamento = new ArrayList<Departamento>();
-
 		dto.getListaDepartamentos().forEach(id -> listaDepartamento.add(new Departamento(id, null)));
-
 		entidade.setListaDepartamentos(listaDepartamento);
-
 		return entidade;
 	}
 
@@ -42,16 +36,11 @@ public class FuncionarioConverter {
 		entidade.setDocumento(dto.getDocumento());
 		entidade.setIdade(dto.getIdade());
 		entidade.setNome(dto.getNome());
-
 		entidade.setCargo(new Cargo(dto.getCargoDto().getId(), dto.getCargoDto().getNome()));
-
 		List<Departamento> listaDepartamento = new ArrayList<Departamento>();
-
 		dto.getListaDepartamentos().forEach(
 				departamento -> listaDepartamento.add(new Departamento(departamento.getId(), departamento.getNome())));
-
 		entidade.setListaDepartamentos(listaDepartamento);
-
 		return entidade;
 	}
 

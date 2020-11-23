@@ -74,7 +74,7 @@ public class FuncionarioWebController {
 			return cadastrar(dto, model);
 		}
 		funcionarioService.salvar(dto);
-		return consultar(model, null, null);
+		return consultar(model, Optional.empty(), Optional.empty());
 	}
 	
 	@GetMapping("/alterar/{id}")
@@ -89,19 +89,19 @@ public class FuncionarioWebController {
 	@PostMapping("/alterar")
 	public String alterar(@ModelAttribute("funcionario")FuncionarioDto dto, Model model) {
 		funcionarioService.salvar(dto);
-		return consultar(model, null, null);
+		return consultar(model, Optional.empty(), Optional.empty());
 	}
 
 	@GetMapping("/delete/{id}")
 	public String remover(@PathVariable Long id, Model model) {
 		funcionarioService.deletar(id);
-		return consultar(model, null, null);
+		return consultar(model, Optional.empty(), Optional.empty());
 	}
 	
 	private Page<Funcionario> consultarFuncionariosPorPagina(Model model, Optional<Integer> pagina,
 			Optional<Integer> quantidade) {
+		int pageSize = quantidade.orElse(QUANTIDADE_PAGINA);
 		int currentPage = pagina.orElse(PAGINA);
-        int pageSize = quantidade.orElse(QUANTIDADE_PAGINA);
 		
         Page<Funcionario> listaFuncionarios = funcionarioService.listarTodos(PageRequest.of(currentPage - 1, pageSize));
 		

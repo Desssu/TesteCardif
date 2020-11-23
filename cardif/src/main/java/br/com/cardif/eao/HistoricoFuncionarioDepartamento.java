@@ -25,9 +25,8 @@ public class HistoricoFuncionarioDepartamento {
 	@Column(name = "hist_func_dept_id")
 	private Long id;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "id_func_chefe_departamento")
-//	private Funcionario funcionarioChefDepartamento;
+	@Column(name = "flag_func_chefe_departamento")
+	private String funcionarioChefDepartamento;
 	
 	@Column(name = "departamento_id")
 	private Long idDepartamento;
