@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ListaVIP</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bootstrap/css/formulario.css}" />
+</head>
+<body>
+	<form action="#" th:action="@{/funcionario/cadastrar}" th:object="${funcionario}" method="post" class="form-horizontal form">
+		<th:block th:include="/funcionario/inputsfuncionario.html"/>
+		<button type="submit" class="btn btn-primary tamanhoBotoes">Cadastrar</button>
+		<a th:href="|@{/funcionario/consultar}|" class="btn btn-secondary tamanhoBotoes">Voltar</a>
+	</form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Lista de Funcionários</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bootstrap/css/formulario.css}" />
+</head>
+</head>
+<body>
+	<div class="container" id="listaDeFuncionarios">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Idade</th>
+					<th>Data de Nascimento</th>
+					<th>Número do Documento</th>
+					<th>Cargo</th>
+					<th>Departamento</th>
+					<th>Alterar</th>
+					<th>Remover</th>
+				</tr>
+			</thead>
+			<tbody>
+				<span th:each="funcionario : ${listaFuncionarios}">
+				<tr th:each="departamento : ${funcionario.listaDepartamentos}">
+					<td><span th:text="${funcionario.id}"></span></td>
+					<td><span th:text="${funcionario.nome}"></span></td>
+					<td><span th:text="${funcionario.idade}"></span></td>
+					
+					<td><span th:text="${#temporals.format(funcionario.dataNascimento, 'dd-MM-yyyy')}"></span></td>
+					
+					<td><span th:text="${funcionario.documento}"></span></td>
+					<td><span th:text="${funcionario.cargo.nome}"></span></td>
+					<td><span th:text="${departamento.nome}"></span></td>
+					<td><a
+						th:href="|@{/funcionario/alterar/{id}(id=${funcionario.id})}|"
+						class="btn btn-primary">Alterar</a></td>
+					<td><a
+						th:href="|@{/funcionario/delete/{id}(id=${funcionario.id})}|"
+						class="btn btn-danger">Delete</a></td>
+				</tr>
+				</span>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="7">
+					<td colspan="4"><a th:href="|@{/funcionario/cadastrar}|" class="btn btn-primary">Cadastrar novo funcionário</a></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</body>
+</html>

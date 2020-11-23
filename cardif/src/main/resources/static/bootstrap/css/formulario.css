@@ -1,0 +1,21 @@
+.container{
+ position relative;
+}
+.form{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ 
+}
+
+.tamanhoBotoes{
+	width: 100px !important;
+}
+
+.table {
+   margin: auto;
+   width: 50% !important; 
+   margin-top: 10% !important;
+}
+

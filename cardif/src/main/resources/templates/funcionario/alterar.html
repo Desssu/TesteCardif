@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Alterar Funcionário</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bootstrap/css/formulario.css}" />
+</head>
+<body class="container">
+	<form action="#" th:action="@{/funcionario/alterar}"
+		th:object="${funcionario}" method="post" class="form-horizontal form">
+
+		<input type="hidden" th:field="*{id}">
+
+		<th:block th:include="/funcionario/inputsfuncionario.html"></th:block>
+
+		<button type="submit" class="btn btn-primary tamanhoBotoes">Alterar</button>
+		<a th:href="|@{/funcionario/consultar}|" class="btn btn-secondary tamanhoBotoes">Voltar</a>
+	</form>
+</body>
+</html>

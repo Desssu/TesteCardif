@@ -1,0 +1,36 @@
+	<div >
+		<label for="nome">Nome</label> 
+		<input type="text" class="form-control" id="nome" th:name="nome" th:value="*{nome}" th:field="*{nome}" placeholder="Nome" th:errorClass="is-invalid"/>
+		<div class="invalid-feedback" th:errors="*{nome}"/>
+	</div>
+	<div  >
+		<label for="idade">Idade</label> 
+		<input type="number" class="form-control" id="idade" th:name="idade" th:value="*{idade}" th:field="*{idade}" placeholder="Idade" th:errorClass="is-invalid"/>
+		<div class="invalid-feedback" th:errors="*{idade}"/>
+	</div>
+	<div  >
+		<label for="dataNacimento">Data de Nascimento</label> 
+		<input type="date" class="form-control" id="dataNacimento" placeholder="Data de Nascimento" th:name="dataNascimento" th:field="*{dataNascimento}" th:value="${#temporals.formatISO(localDate)}" th:errorClass="is-invalid"/>
+		<div class="invalid-feedback" th:errors="*{dataNascimento}"/>
+	</div>
+	<div  >
+		<label for="documento">Número de Documento</label> 
+		<input type="text" class="form-control" id="documento" placeholder="Número de Documento" th:name="documento" th:value="*{documento}" th:field="*{documento}" th:errorClass="is-invalid"/>
+		<div class="invalid-feedback" th:errors="*{documento}"/>
+	</div>
+
+	<div  >
+		<label for="cargo">Cargo</label> 
+		<select id="idCargo" class="form-control" th:field="*{cargoDto}" th:errorClass="is-invalid">
+			<option value="ttt">Selecione o Cargo</option>
+			<option th:each="cargo : ${listaCargo}" th:value="${cargo.id}" th:text="${cargo.nome}"/>
+		</select>
+		<div class="invalid-feedback" th:errors="*{cargoDto}"/>
+	</div>
+	<div  >
+		<label for="departamento">Departamento</label> 
+		<select class="form-control" id="idDepartamento" th:field="*{listaDepartamentos}" size="5" multiple="multiple" th:errorClass="is-invalid">
+			<option th:each="departamento : ${listaDepartamento}" th:value="${departamento.id}" th:text="${departamento.nome}"/>
+		</select>
+		<div class="invalid-feedback" th:errors="*{listaDepartamentos}"/>
+	</div>
