@@ -49,6 +49,13 @@
 			<tfoot>
 				<tr>
 					<td colspan="7">
+						<div th:if="${listaFuncionarios.totalPages > 0}" class="pagination"
+						    th:each="numeroPagina : ${numeroPaginas}">
+						    <a th:href="@{/funcionario/consultar(quantidade=${listaFuncionarios.size}, pagina=${numeroPagina})}"
+						        th:text="'Página ' + ${numeroPagina}"
+						        th:class="${numeroPagina==listaFuncionarios.number + 1} ? active"></a>
+						</div>
+					</td>
 					<td colspan="4"><a th:href="|@{/funcionario/cadastrar}|" class="btn btn-primary">Cadastrar novo funcionário</a></td>
 				</tr>
 			</tfoot>
